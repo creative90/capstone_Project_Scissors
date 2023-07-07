@@ -35,7 +35,7 @@ const swaggerDefinition = {
       description: 'Development server',
     },
     {
-      url: 'https://xixuz.onrender.com',
+      url: 'https://urlscissors.onrender.com',
       description: 'Production seerver',
     },
   ],
