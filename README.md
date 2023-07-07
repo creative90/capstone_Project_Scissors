@@ -38,7 +38,7 @@ This is a link shortening app, similar to bit.ly or ow.ly.
 
 ## Base URL
 
-[scissors](https://xixuz.onrender.com/)
+[scissors](https://urlscissors.onrender.com/)
 
 ### Link/Limo MODEL
 
