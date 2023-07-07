@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- google font styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- personal styles -->
+    <link rel="stylesheet" type="text/css" href="/styles.css" />
+    <title>Scissors</title>
+  </head>
+  <body>
+    <div class="message">
+      <div>
+        <% if (data.username) { %>
+        <p class="valid">Hi, <%= data.username %> 👋 !</p>
+        <% } %>
+      </div>
+      <div>
+        <% if (data.error) { %>
+        <p class="error"><%= data.error %></p>
+        <% } %>
+      </div>
+    </div>
+    <div class="container">
+      <header class="header">
+        <img
+          src="/imgs/scissors-logo.png"
+          alt="Scissors logo"
+          class="heading__logo"
+        />
+        <div class="heading">
+          <h1 class="heading__primary">Scissors</h1>
+          <p class="heading__subtitle">smoothly Shorten your links</p>
+        </div>
+      </header>
+
+      <main class="main">
+        <div class="limo-info">
+          <div class="shortened-link">
+            <% if (data.shortenedLimo) { %>
+            <p class="shortened-link__text">Your shortened link:</p>
+            <a
+              href="<%= data.shortenedLimo %>"
+              id="<%= data.shortenedLimo %>"
+              target="_blank"
+              ><%= data.shortenedLimo %></a
+            >
+            <% } %>
+          </div>
+          <div class="limo__qr-code">
+            <% if (data.qr_code) { %>
+            <span>QR code :</span>
+            <div class="limo__qr-code-container">
+              <span
+                style="width: 200px; height: 200px; font-size: 6.5px"
+                class="limo__qr-code-img"
+                alt="qr-code"
+                data-content="<%= data.qr_code%>"
+              ></span>
+            </div>
+            <% } %>
+          </div>
+        </div>
+
+        <form
+          method="POST"
+          action="/api/v1/shorten"
+          class="form-limo"
+          id="limo"
+        >
+          <label for="original_url" class="form-limo__label"
+            >Enter the link to shorten:</label
+          >
+          <input
+            type="text"
+            name="original_url"
+            id="original_url"
+            class="form-limo__input"
+            required
+          />
+          <button type="submit" class="btn btn--submit">Shorten Link</button>
+        </form>
+      </main>
+
+      <aside class="sidebar history">
+        <h2 class="heading__secondary">History</h2>
+        <div class="history__list">
+          <div class="history__item">
+            <span>Original url</span>
+            <span>Shortened url</span>
+            <span>Date created</span>
+          </div>
+          <% if (data.history) { %> <% data.history.forEach((item) => { %>
+          <div class="history__item">
+            <a href="<%= item.original_url %>" target="_blank"
+              ><%= item.original_url %></a
+            >
+            <a href="/api/v1/<%= item.shortened_url %>" target="_blank"
+              ><%= item.shortened_url %></a
+            >
+            <span><%= item.date_created %></span>
+          </div>
+          <% }) %> <% } %>
+        </div>
+      </aside>
+    </div>
+  </body>
+</html>

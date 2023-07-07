@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- google font styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- personal styles -->
+    <link rel="stylesheet" type="text/css" href="/styles.css" />
+    <!-- font awesome script -->
+    <script
+      src="https://kit.fontawesome.com/7c9958e3c2.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Scissors</title>
+  </head>
+  <body>
+    <div class="message">
+      <div>
+        <% if (data.error) { %>
+        <p class="error"><%= data.error %></p>
+        <% } %>
+      </div>
+      <div>
+        <% if (data.valid) { %>
+        <p class="valid"><%= data.valid %></p>
+        <% } %>
+      </div>
+    </div>
+    <div class="container">
+      <header class="header">
+        <img
+          src="/imgs/scissors-logo.png"
+          alt="Scissors logo"
+          class="heading__logo"
+        />
+        <h1 class="heading__primary">Scissors</h1>
+        <p class="heading__subtitle">smoothly Shorten your links</p>
+      </header>
+      <main id="login">
+        <form action="/login" method="POST" class="form">
+          <div class="form__group">
+            <label for="email">Email</label>
+            <input
+              class="form__input"
+              type="text"
+              name="email"
+              id="email"
+              placeholder="Email"
+              required
+            />
+          </div>
+          <div class="form__group">
+            <label for="password">Password</label>
+            <input
+              class="form__input"
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Password"
+              required
+            />
+            <!-- toggle password functionality -->
+            <div class="form__checkPassword hide">
+              <input
+                type="checkbox"
+                id="togglePassword3"
+                class="form__checkbox"
+              />
+              <label for="togglePassword3" class="showPassword togglePassword"
+                ><i class="fa-regular fa-eye"></i>
+              </label>
+              <label
+                for="togglePassword3"
+                class="hidePassword togglePassword hide"
+                ><i class="fa-regular fa-eye-slash"></i
+              ></label>
+            </div>
+          </div>
+
+          <div class="form__group">
+            <button type="submit" class="btn btn--submit btn--login">
+              login
+            </button>
+          </div>
+
+          <div class="pages">
+            <p class="pages__text">Don't have an account?</p>
+            <a href="/signup" class="pages__link">Sign up</a>
+          </div>
+        </form>
+      </main>
+    </div>
+    <script src="/script.js"></script>
+  </body>
+</html>
