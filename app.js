@@ -16,7 +16,7 @@ connectToDatabase();
 const swaggerDefinition = {
   openapi: '3.0.0',
   info: {
-    title: 'Express API for XiXuZ',
+    title: 'Express API for SciSSors',
     version: '1.0.0',
     description:
       'This is a REST API application made with Express. It is a link shortening app.',
@@ -31,7 +31,7 @@ const swaggerDefinition = {
   },
   servers: [
     {
-      url: 'http://localhost:8080',
+      url: 'http://localhost:5000',
       description: 'Development server',
     },
     {

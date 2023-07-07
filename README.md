@@ -1,4 +1,4 @@
-# **xixuz App**
+# **Scissors App**
 
 ## Introduction
 
@@ -56,7 +56,7 @@ This is a link shortening app, similar to bit.ly or ow.ly.
 | limo_history    | string    | optional, default: false      |
 | limo_modifiedAt | string    | optional, default: false      |
 
-![xixuz Landing page - name request.](./public/imgs/site-image-1.png)
+![Scissors Landing page - name request.](./public/imgs/site-image-1.png)
 
 ## handler functions (controllers)
 
@@ -72,7 +72,7 @@ This is a link shortening app, similar to bit.ly or ow.ly.
 res.render('index', { data: { shortenedLimo: shortID, error: null } });
 ```
 
-![xixuz return message.](./public/imgs/site-image-2.png)
+![Sissors return message.](./public/imgs/site-image-2.png)
 
 ### getSiteFromShortenedLimo
 
@@ -118,7 +118,7 @@ res.render('index', {
 
 ## Contributor
 
-- Zeuhz Droid(David A.)
+- Wilson Ezeibekwe
 
 ```
 
