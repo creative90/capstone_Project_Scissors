@@ -2,7 +2,7 @@
   "name": "scissors",
   "version": "1.0.0",
   "description": "A link length shortening app",
-  "main": "database.js",
+  "main": "app.js",
   "scripts": {
     "start": "nodemon app.js",
     "prod": "nodemon NODE_ENV=production app.js"
