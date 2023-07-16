@@ -18,7 +18,6 @@ const sendToken = (token, res) => {
   if (process.env.NODE_ENV === 'production') {
     cookieOptions.secure = true;
   }
-
   //   send cookie to client side
   res.cookie('jwt', token, cookieOptions);
 };
@@ -137,5 +136,6 @@ const verify = asyncHandler(async (req, res, next) => {
     res.render('login', { data: { valid: `please log in.` } });
   }
 });
+
 
 module.exports = {signup, login, verify };
