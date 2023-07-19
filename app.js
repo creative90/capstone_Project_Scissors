@@ -7,6 +7,8 @@ require('dotenv').config();
 
 const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
+const logger = require('./logger/logger');
+const httpLogger = require('./logger/httpLogger');
 const rateLimit = require('express-rate-limit');
 
 const connectToDatabase = require('./database');
@@ -64,9 +66,16 @@ if ((process.env.NODE_ENV = 'development')) {
 
 app.use(express.static('public'));
 
+app.use(httpLogger);
 // access request body
+
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
+
+process.on('uncaughtException', (err) => {
+  logger.info('UNHANDLED EXCEPTION! 💥 Shutting Down');
+  process.exit(1);
+});
 
 // set up ejs file format
 app.set('view engine', 'ejs');
@@ -124,8 +133,15 @@ app.use(errorHandler)
 app.use(notFound)
 
 // starting the server
-app.listen(process.env.PORT || 5000, () => {
+const server = app.listen(process.env.PORT || 5000, () => {
   console.log(`app is listening on port : ${process.env.PORT}`);
 });
+
+process.on('unhandledRejection', (err) => {
+  logger.info('UNHANDLED REJECTION! 💥 Shutting Down');
+  server.close(() => {
+    process.exit(1);
+  });
+})
 
 module.exports = app;
